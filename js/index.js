@@ -15,9 +15,9 @@ window.addEventListener("load", () => {
   //  水波的扩散速度
   const DEFAULT_WATER_SPEED = 2;
 
-  const waterTaskList = [];
+  let waterTaskList = [];
   let timer = 0;
-  let element = createCanvasElement();
+  let element = createCanvasElement(document.createElement("div"));
   let pen = element.getContext("2d");
 
   const $containerList = [
@@ -47,7 +47,7 @@ window.addEventListener("load", () => {
   }
 
   function initChildren(container) {
-    const $canvas = createCanvasElement();
+    const $canvas = createCanvasElement(container);
 
     container.appendChild($canvas);
   }
@@ -105,12 +105,18 @@ window.addEventListener("load", () => {
     });
   }
 
-  function createCanvasElement() {
+  /**
+   * @summary canvas.width & canvas.height 不能设置为 "100%", 会被当做数值
+   * @summary 故需获取父级元素的宽高
+   * @param {HTMLElement} container 波浪按钮的容器
+   */
+  function createCanvasElement(container) {
     const $canvas = document.createElement("canvas");
+    const containerRect = container.getBoundingClientRect();
 
     $canvas.classList += DEFAULT_WATER_BTN_CANVAS_CLASS;
-    $canvas.setAttribute("width", "100%");
-    $canvas.setAttribute("height", "100%");
+    $canvas.setAttribute("width", `${containerRect.width}px`);
+    $canvas.setAttribute("height", `${containerRect.height}px`);
     $canvas.style.cssText += `
       ;position: absolute;
       top: 0;
@@ -123,6 +129,9 @@ window.addEventListener("load", () => {
     return $canvas;
   }
 
+  /**
+   * @description 波纹类
+   */
   class Water {
     constructor(options) {
       this.radius = options.radius;

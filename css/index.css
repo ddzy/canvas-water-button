@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .btn {
   overflow: hidden;
   position: relative;
@@ -41,4 +45,20 @@
 .btn-confirm:hover {
   background-color: #116aff;
   color: #fff;
+}
+.btn-cancel {
+  margin-left: 8px;
+  background-color: transparent;
+  color: #4f5276;
+}
+.btn-cancel:hover {
+  color: #116aff;
+  background-color: transparent;
+}
+.box1 {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000;
 }
