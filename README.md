@@ -28,12 +28,6 @@ new Vue({
 
 2. 使用方式
 
-使用时需添加 `k-water-btn` 类名以开启波浪效果
-
-使用属性 `data-k-water-fill-color` 来自定义波浪颜色
-
-使用属性 `data-k-water-unconstant` 来关闭连续波浪
-
 ```html
 <template>
   <button
@@ -58,7 +52,7 @@ new Vue({
 </script>
 ```
 
-3. 可配置项
+1. 可配置项
 
 | Name                    | Required | Description                                 |
 | ----------------------- | -------- | ------------------------------------------- |
